@@ -89,33 +89,4 @@
   </script>
 
 </body>
-</html>    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
-</head>
-<body>
-  <div id="heart">❤️</div>
-  <div id="message">Hi Althea laban lang wag ka sumuko nandito lang ako kapag may problema ka handa ako makinig ang magbigay ng payo yun lang keep fighting!! fight! fight!. 💖</div>
-
-  <script>
-    const heart = document.getElementById("heart");
-    const message = document.getElementById("message");
-
-    let size = 50; // starting size
-    heart.addEventListener("click", () => {
-      size += 30;
-      heart.style.fontSize = size + "px";
-
-      if (size >= 200) { 
-        heart.style.animation = "explode 0.8s forwards";
-        setTimeout(() => {
-          heart.style.display = "none";
-          message.style.display = "block";
-        }, 800);
-      }
-    });
-  </script>
-</body>
 </html>
