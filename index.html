@@ -1,92 +1,242 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="tl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>❤️</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Big Surprise 🎊</title>
+  <meta name="description" content="Birthday countdown na magrereveal lang sa Sept 20 (Asia/Manila)." />
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3, #fad0c4);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
+    :root{
+      --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#9ca3af; --accent:#22d3ee; --accent2:#a78bfa;
     }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -20%, #1f2937, transparent 60%),
+                  radial-gradient(1000px 700px at 120% 20%, #111827, transparent 50%), var(--bg);
+      color:var(--text); display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    .wrap{position:relative; width:100%; max-width:900px; padding:24px}
+    .card{
+      position:relative; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:24px; box-shadow: 0 10px 40px rgba(0,0,0,.4);
+      overflow:hidden;
+    }
+    header{
+      padding:28px 24px 12px; text-align:center; border-bottom:1px dashed rgba(255,255,255,.08);
+    }
+    h1{margin:0; font-weight:800; font-size:clamp(24px,4vw,36px)}
+    p.sub{margin:6px 0 0; color:var(--muted); font-size:clamp(13px,2vw,16px)}
+    .content{padding:28px; display:grid; gap:22px}/* Countdown */
+.count{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; text-align:center;
+}
+.unit{background:rgba(255,255,255,.04); padding:18px 12px; border-radius:16px; border:1px solid rgba(255,255,255,.06)}
+.num{font-size:clamp(28px,6vw,54px); font-weight:800; letter-spacing:1px}
+.lbl{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+.hint{font-size:14px; color:var(--muted); text-align:center}
 
-    .glass {
-      backdrop-filter: blur(15px) saturate(180%);
-      -webkit-backdrop-filter: blur(15px) saturate(180%);
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      padding: 30px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-      color: white;
-    }
+.footer{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; padding:0 0 26px}
+.btn{
+  appearance:none; border:none; padding:12px 16px; border-radius:999px; cursor:pointer; font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1020;
+  box-shadow: 0 8px 24px rgba(34,211,238,.35);
+}
+.ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.12)}
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-    }
+/* Reveal Screen */
+.reveal{
+  display:none; min-height:420px; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+  padding:32px; text-align:center; position:relative;
+}
+.reveal h2{font-size:clamp(32px,7vw,64px); margin:0; line-height:1.05}
+.msg{font-size:clamp(14px,2.6vw,18px); color:#d1d5db; max-width:700px; white-space:pre-line}
+.heart{font-size:44px; animation:pulse 1.4s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
 
-    video {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 15px;
-      display: none;
-    }
+/* Floating balloons */
+.balloon{position:absolute; bottom:-120px; width:28px; height:36px; background:var(--accent);
+  border-radius:50% 50% 50% 50%/60% 60% 40% 40%; opacity:.7; filter:blur(.2px);
+  box-shadow:0 6px 18px rgba(34,211,238,.35);
+}
 
-    .btn {
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+/* Confetti canvas */
+#confetti{position:absolute; inset:0; pointer-events:none}
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: linear-gradient(135deg, #ff4b2b, #ff416c);
-    }
+.watermark{position:fixed; inset:auto 12px 10px auto; color:rgba(255,255,255,.35); font-size:12px}
+
+/* Small */
+@media (max-width:520px){
+  .content{padding:20px}
+}
+
   </style>
 </head>
 <body>
+  <canvas id="confetti"></canvas>
+  <div class="wrap">
+    <div class="card" id="card">
+      <header>
+        <h1>Birthday Surprise 🎂</h1>
+      </header>
+      <div class="content" id="countdownView">
+        <div class="count" role="timer" aria-live="polite">
+          <div class="unit"><div class="num" id="d">0</div><div class="lbl">Days</div></div>
+          <div class="unit"><div class="num" id="h">0</div><div class="lbl">Hours</div></div>
+          <div class="unit"><div class="num" id="m">0</div><div class="lbl">Minutes</div></div>
+          <div class="unit"><div class="num" id="s">0</div><div class="lbl">Seconds</div></div>
+        </div>
+        <p class="hint">⏳ Wait September 20 For Special Surprise for you.</p>
+     
+      </div><div class="reveal" id="revealView">
+    <div class="heart">💖</div>
+    <h2 id="headline">Happy 20th Birthday, Althea Mae!</h2>
+    <p class="msg" id="message">
+<br>
+Today, we celebrate not just your birthday, but also the amazing person you’ve become. 🎂💖 At 20 years old, you’re stepping into a whole new chapter of life your twenties where bigger dreams, brighter opportunities, and unforgettable adventures are waiting for you. 🌟
+<br>
+Althea Mae, isa ka nang 3rd year BSHM student 🎓 at tunay na nakaka-inspire ang sipag at tiyaga mo. Hindi madali ang course mo, pero ipinapakita mo araw-araw na kaya mong pagsabayin ang hard work at passion mo sa pag-abot ng pangarap. 🙌 Ang layo na ng narating mo, at mas marami ka pang maaabot sa mga susunod na taon.
+<br>
+As you celebrate this special day, my wish for you is a life full of blessings—good health, endless happiness, strong friendships, true love, and success in your studies and future career. 🌷💐 May you continue to shine and inspire everyone around you with your kindness and determination.
+<br>
+Always remember: turning 20 means new beginnings. Embrace every challenge, cherish every memory, and chase every dream with confidence. 🥂✨
+<br>
+Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful journey as a young woman, a dreamer, and soon-to-be BSHM graduate. 💖</p> <div class="footer"> <button class="btn" id="copyLink">Copy Link</button> <button class="btn ghost" id="replayConfetti">Replay Confetti</button> </div> </div> </div>
 
-  <div class="glass">
-    <h1> ❤️</h1>
-    <button class="btn" onclick="playVideo()">▶ Play</button>
-    <video id="loveVideo" controls>
-      <source src="yourvideo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
   </div>
+  <div class="watermark">Made with ❤ for your special day From "Vince Jollo"</div>  <script>
+    // ===== CUSTOMIZE HERE =====
+    const RECEIVER_NAME = "Althea Mae";
+    const REVEAL_TEXT = `Happy 20th Birthday, ${RECEIVER_NAME}!`;
+    const REVEAL_MESSAGE = document.getElementById('message').textContent;
 
-  <script>
-    function playVideo() {
-      document.querySelector('.btn').style.display = 'none';
-      let video = document.getElementById('loveVideo');
-      video.style.display = 'block';
-      video.play();
+    // Target date: September 20, 2025 00:00:00 Asia/Manila
+    const TARGET = { year: 2025, month: 8, day: 20, hour: 0, minute: 0, second: 0 };
+
+    function nowManilaDate(){
+      const s = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+      return new Date(s);
     }
-  </script>
+    function targetManilaDate(){
+      const tStr = `${TARGET.month+1}/${TARGET.day}/${TARGET.year} ${pad(TARGET.hour)}:${pad(TARGET.minute)}:${pad(TARGET.second)}`;
+      return new Date(new Date(tStr).toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
+    }
 
-</body>
+    function pad(n){return String(n).padStart(2,'0')}
+
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+    const countdownView = document.getElementById('countdownView');
+    const revealView = document.getElementById('revealView');
+    const headline = document.getElementById('headline');
+    const message = document.getElementById('message');
+    const testRevealBtn = document.getElementById('testReveal');
+    const replayConfettiBtn = document.getElementById('replayConfetti');
+    const copyLinkBtn = document.getElementById('copyLink');
+
+    headline.textContent = REVEAL_TEXT;
+
+    const target = targetManilaDate();
+
+    const tick = () => {
+      const now = nowManilaDate();
+      let diff = target - now;
+      if (diff <= 0) {
+        showReveal();
+        return;
+      }
+      const sec = Math.floor(diff/1000);
+      const days = Math.floor(sec/86400);
+      const hours = Math.floor((sec%86400)/3600);
+      const mins = Math.floor((sec%3600)/60);
+      const secs = sec % 60;
+      dEl.textContent = days; hEl.textContent = pad(hours); mEl.textContent = pad(mins); sEl.textContent = pad(secs);
+    };
+
+    const interval = setInterval(tick, 1000); tick();
+
+    function showReveal(){
+      clearInterval(interval);
+      countdownView.style.display = 'none';
+      revealView.style.display = 'flex';
+      burstConfetti();
+      floatBalloons();
+    }
+
+    testRevealBtn.addEventListener('click', () => showReveal());
+
+    copyLinkBtn?.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        copyLinkBtn.textContent = 'Link Copied!';
+        setTimeout(()=>copyLinkBtn.textContent='Copy Link', 1500);
+      }catch{ alert('Copy failed.'); }
+    });
+
+    document.getElementById('addToCalendar').addEventListener('click', () => {
+      const dtStart = `${TARGET.year}${pad(TARGET.month+1)}${pad(TARGET.day)}T${pad(TARGET.hour)}${pad(TARGET.minute)}${pad(TARGET.second)}00`;
+      const dtEnd   = `${TARGET.year}${pad(TARGET.month+1)}${pad(TARGET.day)}T${pad((TARGET.hour+1)%24)}${pad(TARGET.minute)}${pad(TARGET.second)}00`;
+      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Birthday Reveal//EN\nBEGIN:VEVENT\nUID:${crypto.randomUUID()}\nDTSTAMP:${dtStart}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Birthday Reveal for ${RECEIVER_NAME}\nDESCRIPTION:Open the secret birthday page!\nEND:VEVENT\nEND:VCALENDAR`;
+      const blob = new Blob([ics], {type:'text/calendar'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Birthday-Reveal-${RECEIVER_NAME}.ics`; a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight }
+    addEventListener('resize', resize); resize();
+
+    function random(min,max){ return Math.random()*(max-min)+min }
+
+    function makeConfetti(n=180){
+      const arr=[]; for(let i=0;i<n;i++){
+        arr.push({
+          x: random(0, canvas.width), y: random(-canvas.height, 0),
+          r: random(4,8), s: random(1,3), a: random(0, 2*Math.PI),
+          tilt: random(-1,1), tiltAngle: 0, tiltSpeed: random(0.05, 0.12)
+        });
+      }
+      return arr;
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confettiPieces.forEach(p=>{
+        p.y += p.s*3; p.x += Math.sin(p.a); p.tiltAngle += p.tiltSpeed; p.tilt = Math.sin(p.tiltAngle)*8;
+        if(p.y>canvas.height+10){ p.y = -10; p.x = random(0, canvas.width); }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.a);
+        ctx.fillStyle = `hsl(${(p.x+p.y)%360} 90% 60%)`;
+        ctx.fillRect(-p.r + p.tilt/2, -p.r, p.r*2, p.r);
+        ctx.restore();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    function burstConfetti(){ confettiPieces = makeConfetti(240); }
+    replayConfettiBtn?.addEventListener('click', burstConfetti);
+
+    draw();
+
+    function floatBalloons(){
+      for(let i=0;i<8;i++){
+        const b = document.createElement('div');
+        b.className='balloon';
+        b.style.left = Math.random()*100 + 'vw';
+        b.style.background = `hsl(${Math.random()*360} 80% 65%)`;
+        const d = Math.random()*6 + 10;
+        b.animate([
+          { transform:'translateY(0) scale(1)' , opacity:.7 },
+          { transform:'translateY(-120vh) scale(1.1)', opacity:0.9 }
+        ], { duration: d*1000, iterations: Infinity, delay: Math.random()*2000, easing:'ease-out' });
+        document.body.appendChild(b);
+      }
+    }
+  </script></body>
 </html>
