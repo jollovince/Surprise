@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="tl">
+<!DOCTYPE html>
+<html lang="tl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -27,50 +28,46 @@
     }
     h1{margin:0; font-weight:800; font-size:clamp(24px,4vw,36px)}
     p.sub{margin:6px 0 0; color:var(--muted); font-size:clamp(13px,2vw,16px)}
-    .content{padding:28px; display:grid; gap:22px}/* Countdown */
-.count{
-  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; text-align:center;
-}
-.unit{background:rgba(255,255,255,.04); padding:18px 12px; border-radius:16px; border:1px solid rgba(255,255,255,.06)}
-.num{font-size:clamp(28px,6vw,54px); font-weight:800; letter-spacing:1px}
-.lbl{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    .content{padding:28px; display:grid; gap:22px}
+    /* Countdown */
+    .count{
+      display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; text-align:center;
+    }
+    .unit{background:rgba(255,255,255,.04); padding:18px 12px; border-radius:16px; border:1px solid rgba(255,255,255,.06)}
+    .num{font-size:clamp(28px,6vw,54px); font-weight:800; letter-spacing:1px}
+    .lbl{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    .hint{font-size:14px; color:var(--muted); text-align:center}
+    .footer{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; padding:0 0 26px}
+    .btn{
+      appearance:none; border:none; padding:12px 16px; border-radius:999px; cursor:pointer; font-weight:700;
+      background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1020;
+      box-shadow: 0 8px 24px rgba(34,211,238,.35);
+    }
 
-.hint{font-size:14px; color:var(--muted); text-align:center}
+    /* Reveal Screen */
+    .reveal{
+      display:none; min-height:420px; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+      padding:32px; text-align:center; position:relative;
+    }
+    .reveal h2{font-size:clamp(32px,7vw,64px); margin:0; line-height:1.05}
+    .msg{font-size:clamp(14px,2.6vw,18px); color:#d1d5db; max-width:700px; white-space:pre-line}
+    .heart{font-size:44px; animation:pulse 1.4s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
 
-.footer{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; padding:0 0 26px}
-.btn{
-  appearance:none; border:none; padding:12px 16px; border-radius:999px; cursor:pointer; font-weight:700;
-  background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1020;
-  box-shadow: 0 8px 24px rgba(34,211,238,.35);
-}
-.ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.12)}
+    /* Floating balloons */
+    .balloon{position:absolute; bottom:-120px; width:28px; height:36px; background:var(--accent);
+      border-radius:50% 50% 50% 50%/60% 60% 40% 40%; opacity:.7; filter:blur(.2px);
+      box-shadow:0 6px 18px rgba(34,211,238,.35);
+    }
 
-/* Reveal Screen */
-.reveal{
-  display:none; min-height:420px; align-items:center; justify-content:center; flex-direction:column; gap:18px;
-  padding:32px; text-align:center; position:relative;
-}
-.reveal h2{font-size:clamp(32px,7vw,64px); margin:0; line-height:1.05}
-.msg{font-size:clamp(14px,2.6vw,18px); color:#d1d5db; max-width:700px; white-space:pre-line}
-.heart{font-size:44px; animation:pulse 1.4s infinite}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+    /* Confetti canvas */
+    #confetti{position:absolute; inset:0; pointer-events:none}
 
-/* Floating balloons */
-.balloon{position:absolute; bottom:-120px; width:28px; height:36px; background:var(--accent);
-  border-radius:50% 50% 50% 50%/60% 60% 40% 40%; opacity:.7; filter:blur(.2px);
-  box-shadow:0 6px 18px rgba(34,211,238,.35);
-}
+    .watermark{position:fixed; inset:auto 12px 10px auto; color:rgba(255,255,255,.35); font-size:12px}
 
-/* Confetti canvas */
-#confetti{position:absolute; inset:0; pointer-events:none}
-
-.watermark{position:fixed; inset:auto 12px 10px auto; color:rgba(255,255,255,.35); font-size:12px}
-
-/* Small */
-@media (max-width:520px){
-  .content{padding:20px}
-}
-
+    @media (max-width:520px){
+      .content{padding:20px}
+    }
   </style>
 </head>
 <body>
@@ -88,31 +85,38 @@
           <div class="unit"><div class="num" id="s">0</div><div class="lbl">Seconds</div></div>
         </div>
         <p class="hint">⏳ Wait September 20 For Special Surprise for you.</p>
-     
-      </div><div class="reveal" id="revealView">
-    <div class="heart">💖</div>
-    <h2 id="headline">Happy 20th Birthday, Althea Mae!</h2>
-    <p class="msg" id="message">
-<br>
-Today, we celebrate not just your birthday, but also the amazing person you’ve become. 🎂💖 At 20 years old, you’re stepping into a whole new chapter of life your twenties where bigger dreams, brighter opportunities, and unforgettable adventures are waiting for you. 🌟
-<br>
-Althea Mae, isa ka nang 3rd year BSHM student 🎓 at tunay na nakaka-inspire ang sipag at tiyaga mo. Hindi madali ang course mo, pero ipinapakita mo araw-araw na kaya mong pagsabayin ang hard work at passion mo sa pag-abot ng pangarap. 🙌 Ang layo na ng narating mo, at mas marami ka pang maaabot sa mga susunod na taon.
-<br>
-As you celebrate this special day, my wish for you is a life full of blessings—good health, endless happiness, strong friendships, true love, and success in your studies and future career. 🌷💐 May you continue to shine and inspire everyone around you with your kindness and determination.
-<br>
-Always remember: turning 20 means new beginnings. Embrace every challenge, cherish every memory, and chase every dream with confidence. 🥂✨
-<br>
-Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful journey as a young woman, a dreamer, and soon-to-be BSHM graduate. 💖</p> <div class="footer"> <button class="btn" id="copyLink">Copy Link</button> <button class="btn ghost" id="replayConfetti">Replay Confetti</button> </div> </div> </div>
+        <div class="footer">
+          <!-- Hidden button (lalabas lang kapag Sept 20 na) -->
+          <button class="btn" id="openMessageBtn" style="display:none;">Open Message</button>
+        </div>
+      </div>
 
+      <div class="reveal" id="revealView">
+        <div class="heart">💖</div>
+        <h2 id="headline">Happy 20th Birthday, Althea Mae!</h2>
+        <p class="msg" id="message">
+Today, we celebrate not just your birthday, but also the amazing person you’ve become. 🎂💖 At 20 years old, you’re stepping into a whole new chapter of life your twenties where bigger dreams, brighter opportunities, and unforgettable adventures are waiting for you. 🌟
+
+Althea Mae, isa ka nang 3rd year BSHM student 🎓 at tunay na nakaka-inspire ang sipag at tiyaga mo. Hindi madali ang course mo, pero ipinapakita mo araw-araw na kaya mong pagsabayin ang hard work at passion mo sa pag-abot ng pangarap. 🙌 Ang layo na ng narating mo, at mas marami ka pang maaabot sa mga susunod na taon.
+
+As you celebrate this special day, my wish for you is a life full of blessings—good health, endless happiness, strong friendships, true love, and success in your studies and future career. 🌷💐 May you continue to shine and inspire everyone around you with your kindness and determination.
+
+Always remember: turning 20 means new beginnings. Embrace every challenge, cherish every memory, and chase every dream with confidence. 🥂✨
+
+Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful journey as a young woman, a dreamer, and soon-to-be BSHM graduate. 💖
+
+And Last Puwede ba ako umakyat Ligaw sayo alam ko nakakabigla pero etong way ang gusto kong mangyari dumaan sa ligaw process dito ko ipapakita na seryoso ako sayo at gagawin ko lahat ayaw ko mangako pero gagawin ko ayaw ko puro ako salita gusto ko gagawin ko lahat handa ako pumunta lagi sa inyo na seryosong seryoso ako sayo first time ko gagawin ito pero nandito na ibubuhos kona ang lahat ng makakaya ko makuha lang ang matamis mong oo
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="watermark">Made with ❤ for your special day From "Vince Jollo"</div>  <script>
-    // ===== CUSTOMIZE HERE =====
+  <div class="watermark">Made with ❤ for your special day From "Vince Jollo"</div>
+
+  <script>
     const RECEIVER_NAME = "Althea Mae";
     const REVEAL_TEXT = `Happy 20th Birthday, ${RECEIVER_NAME}!`;
-    const REVEAL_MESSAGE = document.getElementById('message').textContent;
 
-    // Target date: September 20, 2025 00:00:00 Asia/Manila
-    const TARGET = { year: 2025, month: 8, day: 20, hour: 0, minute: 0, second: 0 };
+    const TARGET = { year: 2025, month: 8, day: 20, hour: 0, minute: 0, second: 0 }; // Sept 20, 2025
 
     function nowManilaDate(){
       const s = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
@@ -122,7 +126,6 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
       const tStr = `${TARGET.month+1}/${TARGET.day}/${TARGET.year} ${pad(TARGET.hour)}:${pad(TARGET.minute)}:${pad(TARGET.second)}`;
       return new Date(new Date(tStr).toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
     }
-
     function pad(n){return String(n).padStart(2,'0')}
 
     const dEl = document.getElementById('d');
@@ -132,20 +135,17 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
     const countdownView = document.getElementById('countdownView');
     const revealView = document.getElementById('revealView');
     const headline = document.getElementById('headline');
-    const message = document.getElementById('message');
-    const testRevealBtn = document.getElementById('testReveal');
-    const replayConfettiBtn = document.getElementById('replayConfetti');
-    const copyLinkBtn = document.getElementById('copyLink');
+    const openMessageBtn = document.getElementById('openMessageBtn');
 
     headline.textContent = REVEAL_TEXT;
-
     const target = targetManilaDate();
 
     const tick = () => {
       const now = nowManilaDate();
       let diff = target - now;
       if (diff <= 0) {
-        showReveal();
+        // Show button pag Sept 20 na
+        openMessageBtn.style.display = 'inline-block';
         return;
       }
       const sec = Math.floor(diff/1000);
@@ -158,6 +158,11 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
 
     const interval = setInterval(tick, 1000); tick();
 
+    // Pag pinindot yung button, tsaka lang magreveal
+    openMessageBtn.addEventListener('click', () => {
+      showReveal();
+    });
+
     function showReveal(){
       clearInterval(interval);
       countdownView.style.display = 'none';
@@ -166,33 +171,13 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
       floatBalloons();
     }
 
-    testRevealBtn.addEventListener('click', () => showReveal());
-
-    copyLinkBtn?.addEventListener('click', async () => {
-      try{
-        await navigator.clipboard.writeText(location.href);
-        copyLinkBtn.textContent = 'Link Copied!';
-        setTimeout(()=>copyLinkBtn.textContent='Copy Link', 1500);
-      }catch{ alert('Copy failed.'); }
-    });
-
-    document.getElementById('addToCalendar').addEventListener('click', () => {
-      const dtStart = `${TARGET.year}${pad(TARGET.month+1)}${pad(TARGET.day)}T${pad(TARGET.hour)}${pad(TARGET.minute)}${pad(TARGET.second)}00`;
-      const dtEnd   = `${TARGET.year}${pad(TARGET.month+1)}${pad(TARGET.day)}T${pad((TARGET.hour+1)%24)}${pad(TARGET.minute)}${pad(TARGET.second)}00`;
-      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Birthday Reveal//EN\nBEGIN:VEVENT\nUID:${crypto.randomUUID()}\nDTSTAMP:${dtStart}Z\nDTSTART:${dtStart}\nDTEND:${dtEnd}\nSUMMARY:Birthday Reveal for ${RECEIVER_NAME}\nDESCRIPTION:Open the secret birthday page!\nEND:VEVENT\nEND:VCALENDAR`;
-      const blob = new Blob([ics], {type:'text/calendar'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Birthday-Reveal-${RECEIVER_NAME}.ics`; a.click(); URL.revokeObjectURL(a.href);
-    });
-
+    // ===== Confetti =====
     const canvas = document.getElementById('confetti');
     const ctx = canvas.getContext('2d');
     let confettiPieces = [];
-
     function resize(){ canvas.width = innerWidth; canvas.height = innerHeight }
     addEventListener('resize', resize); resize();
-
     function random(min,max){ return Math.random()*(max-min)+min }
-
     function makeConfetti(n=180){
       const arr=[]; for(let i=0;i<n;i++){
         arr.push({
@@ -203,7 +188,6 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
       }
       return arr;
     }
-
     function draw(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       confettiPieces.forEach(p=>{
@@ -218,12 +202,10 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
       });
       requestAnimationFrame(draw);
     }
-
     function burstConfetti(){ confettiPieces = makeConfetti(240); }
-    replayConfettiBtn?.addEventListener('click', burstConfetti);
-
     draw();
 
+    // ===== Balloons =====
     function floatBalloons(){
       for(let i=0;i<8;i++){
         const b = document.createElement('div');
@@ -238,5 +220,6 @@ Once again, happiest 20th birthday, Althea Mae! 🎉 Cheers to your beautiful jo
         document.body.appendChild(b);
       }
     }
-  </script></body>
-</html>
+  </script>
+</body>
+  </html>
