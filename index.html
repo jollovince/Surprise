@@ -1,88 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sorry Message</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  overflow:hidden;
+  text-align:center;
+  color:#fff;
+}
 
-        h1 {
-            color: #ff4d6d;
-        }
+.container{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  max-width:420px;
+  width:90%;
+}
 
-        button {
-            padding: 15px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px;
-            transition: 0.3s;
-        }
+h1{
+  font-size:26px;
+  margin-bottom:15px;
+}
 
-        #yesBtn {
-            background: #4CAF50;
-            color: white;
-        }
+p{
+  font-size:15px;
+  margin-bottom:25px;
+  line-height:1.6;
+}
 
-        #noBtn {
-            background: #f44336;
-            color: white;
-        }
-    </style>
+button{
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#ff4e88;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+.heart{
+  position:absolute;
+  font-size:18px;
+  animation:float 5s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:0.7;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Sorry na 🥺</h1>
-    <p>Pwede na ba tayo mag bati?</p>
+  <h1>Hi Loraine 💕</h1>
+  <p>
+Alam mo, minsan hindi ko man masabi agad, pero sobra kitang naa-appreciate. Kahit simpleng usap lang natin, kahit random kwento mo lang tungkol sa araw mo, iba yung effect sakin. Parang gumagaan lahat. Parang okay na ulit kahit pagod ako.
+Hindi ko kailangan ng sobrang bongga na moments para maging masaya. Kahit ikaw lang, kahit chat lang, sapat na. Ang simple pero ang totoo — masaya ako pag kausap kita. Mas kampante ako. Mas calm ako.
+Alam mo yung feeling na hindi mo hinahanap pero pag nandyan, ayaw mo na mawala? Ganun ka sakin. Hindi kita pinipilit. Hindi kita minamadali. Pero gusto kitang piliin araw-araw.
+At kung minsan tahimik ako, o hindi masyadong sweet, hindi ibig sabihin kulang. Minsan hindi lang ako magaling mag-express. Pero ramdam mo naman siguro… seryoso ako sayo.
+Salamat sa pagiging ikaw. Salamat sa time mo. Salamat sa presence mo. Kahit chat lang tayo, ang laki ng impact mo sa araw ko.
+Miss kita — hindi yung drama type, kundi yung totoo lang. Yung gusto ko lang marinig boses mo, o makita notification mo.
+  </p>
 
-    <button id="yesBtn">Bati na tayo</button>
-    <button id="noBtn">Hindi pa</button>
+  <button onclick="showMessage()">Click mo to 😌</button>
 </div>
 
 <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
+function showMessage(){
+  alert("Ang cute mo. Yun lang. 😌💕");
+}
 
-    let yesSize = 18;
-    let noSize = 18;
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.bottom="-20px";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},5000);
+}
 
-    noBtn.addEventListener("click", function() {
-        yesSize += 10;
-        noSize -= 3;
-
-        yesBtn.style.fontSize = yesSize + "px";
-        yesBtn.style.padding = (yesSize) + "px";
-
-        if(noSize > 5){
-            noBtn.style.fontSize = noSize + "px";
-            noBtn.style.padding = (noSize/2) + "px";
-        }
-    });
-
-    yesBtn.addEventListener("click", function() {
-        document.body.innerHTML = `
-            <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-size:40px;color:#ff4d6d;">
-                Yeyyy bati na tayo ❤️
-            </div>
-        `;
-    });
+setInterval(createHeart,500);
 </script>
 
 </body>
